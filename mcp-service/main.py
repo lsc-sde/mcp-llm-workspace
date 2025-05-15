@@ -19,3 +19,15 @@ class ValidationResponse(BaseModel):
 @app.get("/")
 def default_root():
     return {"message": "FastAPI is working."}
+
+@app.post("/validate", response_model=ValidationResponse)
+def validate_context(payload: ContextInput):
+    required = {"task", "user_role"}
+    missing = list(required - payload.context.keys())
+    is_valid = len(missing) == 0
+
+    return ValidationResponse(
+        valid=is_valid,
+        missing_fields=missing,
+        message="Valid Context" if is_valid else f"Missing: {', '.join(missing)}"
+    ) 
