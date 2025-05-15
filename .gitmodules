@@ -1,0 +1,3 @@
+[submodule "docker-llm-workspace"]
+	path = docker-llm-workspace
+	url = https://github.com/lsc-sde/docker-llm-workspace.git
