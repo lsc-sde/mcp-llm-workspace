@@ -1,2 +1,5 @@
 fastapi
 uvicorn
+pydantic>=2.3.0
+httpx
+mcp>=1.6.0

@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Dict, List, Optional
+import mcp
 
 app = FastAPI()
 
@@ -17,8 +18,8 @@ class ValidationResponse(BaseModel):
 
 
 @app.get("/")
-def default_root():
-    return {"message": "FastAPI is working."}
+def index():
+    return {"message": "MCP API running."}
 
 @app.post("/validate", response_model=ValidationResponse)
 def validate_context(payload: ContextInput):
