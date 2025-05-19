@@ -1,6 +1,16 @@
 services:
   mcp-service:
     build: ./mcp-service
+    ports:
+      - 8000:8000
+    container_name: mcp-service
   
   llm-workspace:
     build: ./docker-llm-workspace
+    ports:
+      - 8888:8888
+      - 8080:8080
+      - 5432:5432
+    depends_on:
+      - mcp-service
+    container_name: llm-workspace
