@@ -1,0 +1,6 @@
+services:
+  mcp-service:
+    build: ./mcp-service
+  
+  llm-workspace:
+    build: ./docker-llm-workspace
