@@ -28,9 +28,7 @@ RUN uv pip install --system fastmcp
 COPY . . 
 
 # Expose FastMCP Port
-EXPOSE 8000 6274
+EXPOSE 8000
 
 # Run The Server
-#CMD ["python", "main.py"]
-#CMD ["fastmcp", "dev", "main.py"]
 CMD ["fastmcp", "run", "main.py"]
