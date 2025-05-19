@@ -32,4 +32,5 @@ EXPOSE 8000 6274
 
 # Run The Server
 #CMD ["python", "main.py"]
-CMD ["fastmcp", "dev", "main.py"]
+#CMD ["fastmcp", "dev", "main.py"]
+CMD ["fastmcp", "run", "main.py"]
