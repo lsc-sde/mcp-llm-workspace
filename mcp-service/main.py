@@ -1,34 +1,17 @@
-from fastapi import FastAPI
-from pydantic import BaseModel
-from typing import Dict, List, Optional
-import mcp
+import logging
+from mcp.server.fastmcp import FastMCP, Context
 
-app = FastAPI()
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
+mcp = FastMCP("LLM MCP Server")
 
-class ContextInput(BaseModel):
-    model_id: str
-    input: str
-    context: Dict[str, str]
+@mcp.tool()
+def echo(ctx: Context) -> str:
+    return f"You said {ctx.input}"
 
-class ValidationResponse(BaseModel):
-    valid: bool
-    missing_fields: List[str]
-    message: Optional[str] = None
+# Commented currently to run in dev inspector
+if __name__ == "__main__":
+    logger.info("Starting MCP server...")
+    mcp.run()
 
-
-@app.get("/")
-def index():
-    return {"message": "MCP API running."}
-
-@app.post("/validate", response_model=ValidationResponse)
-def validate_context(payload: ContextInput):
-    required = {"task", "user_role"}
-    missing = list(required - payload.context.keys())
-    is_valid = len(missing) == 0
-
-    return ValidationResponse(
-        valid=is_valid,
-        missing_fields=missing,
-        message="Valid Context" if is_valid else f"Missing: {', '.join(missing)}"
-    ) 
