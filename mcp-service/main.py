@@ -10,8 +10,10 @@ mcp = FastMCP("LLM MCP Server")
 def echo(ctx: Context) -> str:
     return f"You said {ctx.input}"
 
+
 # Commented currently to run in dev inspector
 if __name__ == "__main__":
-    logger.info("Starting MCP server...")
-    mcp.run()
+    logger.info("Starting FastMCP server...")
+    mcp.run(transport="sse")
+
 
