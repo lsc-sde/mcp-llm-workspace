@@ -31,4 +31,4 @@ COPY . .
 EXPOSE 8000
 
 # Run The Server
-CMD ["fastmcp", "run", "main.py"]
+CMD [ "python", "main.py" ]
