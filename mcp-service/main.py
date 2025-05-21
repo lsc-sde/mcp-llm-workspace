@@ -15,5 +15,5 @@ def echo():
 # Commented currently to run in dev inspector
 if __name__ == "__main__":
     logger.info("Starting FastMCP server...")
-    mcp.run(transport="streamable-http")
+    mcp.run(transport="sse")
 
