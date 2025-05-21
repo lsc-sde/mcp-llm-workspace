@@ -1,5 +1,4 @@
 from fastmcp import Client
-import asyncio
 
 # The Client automatically uses StreamableHttpTransport for HTTP URLs
 client = Client("http://mcp-service:8000/mcp")
@@ -15,7 +14,5 @@ async def echo():
         print(f"Echo: {response}")
 
 
-if __name__=="__main_":
-    #session = await client.start_session()
-    await list_tools()
-    await echo()
+await list_tools()
+await echo()
