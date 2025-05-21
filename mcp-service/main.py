@@ -6,9 +6,9 @@ logger = logging.getLogger(__name__)
 
 mcp = FastMCP("LLM MCP Server")
 
-@mcp.tool(name="echo")
-def echo():
-    return f"Echo Test"
+@mcp.tool(name="Echo", description="Repeats the message back to you")
+def echo(message: str) -> str:
+    return f"You said: {message}"
 
 
     
