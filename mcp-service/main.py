@@ -6,14 +6,14 @@ logger = logging.getLogger(__name__)
 
 mcp = FastMCP("LLM MCP Server")
 
-@mcp.tool()
-def echo(ctx: Context) -> str:
-    return f"You said {ctx.input}"
+@mcp.tool(name="echo")
+def echo():
+    return f"Echo Test"
 
 
+    
 # Commented currently to run in dev inspector
 if __name__ == "__main__":
     logger.info("Starting FastMCP server...")
-    mcp.run(transport="sse")
-
+    mcp.run(transport="streamable-http")
 
