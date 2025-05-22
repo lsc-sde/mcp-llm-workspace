@@ -14,3 +14,9 @@ services:
     depends_on:
       - mcp-service
     container_name: llm-workspace
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]
+    runtime: nvidia
